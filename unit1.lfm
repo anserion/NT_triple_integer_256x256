@@ -1,0 +1,250 @@
+object Form1: TForm1
+  Left = 213
+  Height = 602
+  Top = 127
+  Width = 1067
+  AutoSize = True
+  BorderStyle = bsDialog
+  BorderWidth = 10
+  Caption = 'Трехслойная нейронная сеть с целочисленными коэффициентами восстановления зашумленного изображения (Ионисян А.С.)'
+  ClientHeight = 602
+  ClientWidth = 1067
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '2.0.10.0'
+  object Bevel_Layer3: TBevel
+    Left = 544
+    Height = 512
+    Top = 64
+    Width = 512
+  end
+  object Bevel_receptors: TBevel
+    Left = 16
+    Height = 512
+    Top = 64
+    Width = 512
+  end
+  object PB_receptors: TPaintBox
+    Left = 16
+    Height = 512
+    Top = 64
+    Width = 512
+    ParentFont = False
+    OnPaint = PB_receptorsPaint
+  end
+  object Label2: TLabel
+    Left = 16
+    Height = 17
+    Top = 577
+    Width = 174
+    Caption = 'Рецепторное поле (РП)'
+    ParentColor = False
+    ParentFont = False
+  end
+  object PB_Layer3: TPaintBox
+    Left = 544
+    Height = 512
+    Top = 64
+    Width = 512
+    ParentFont = False
+    OnPaint = PB_Layer3Paint
+  end
+  object Label_Layer3: TLabel
+    Left = 544
+    Height = 17
+    Top = 577
+    Width = 238
+    Caption = 'Восстановленное изображение'
+    ParentColor = False
+    ParentFont = False
+  end
+  object BTN_nw_reset: TButton
+    Left = 400
+    Height = 43
+    Top = 8
+    Width = 128
+    Caption = 'Сброс нейросети'
+    OnClick = BTN_nw_resetClick
+    TabOrder = 0
+  end
+  object CB_timer: TCheckBox
+    Left = 807
+    Height = 23
+    Top = 8
+    Width = 82
+    Caption = 'Таймер'
+    OnChange = CB_timerChange
+    TabOrder = 1
+  end
+  object BTN_s_clear: TButton
+    Left = 544
+    Height = 45
+    Top = 6
+    Width = 112
+    Caption = 'Очистить РП'
+    OnClick = BTN_s_clearClick
+    TabOrder = 2
+  end
+  object Edit_N_L1: TEdit
+    Left = 16
+    Height = 30
+    Top = 24
+    Width = 64
+    ReadOnly = True
+    TabOrder = 3
+    Text = '1000'
+  end
+  object Edit_N_L2: TEdit
+    Left = 232
+    Height = 30
+    Top = 24
+    Width = 69
+    ReadOnly = True
+    TabOrder = 4
+    Text = '5'
+  end
+  object Label1: TLabel
+    Left = 16
+    Height = 17
+    Top = 6
+    Width = 65
+    Caption = '1-й слой'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 240
+    Height = 17
+    Top = 6
+    Width = 65
+    Caption = '2-й слой'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    Left = 320
+    Height = 17
+    Top = 6
+    Width = 65
+    Caption = '3-й слой'
+    ParentColor = False
+  end
+  object Edit_N_L3: TEdit
+    Left = 312
+    Height = 30
+    Top = 24
+    Width = 69
+    ReadOnly = True
+    TabOrder = 5
+    Text = '65536'
+  end
+  object Edit_timer: TEdit
+    Left = 800
+    Height = 30
+    Top = 34
+    Width = 80
+    TabOrder = 6
+    Text = '200'
+  end
+  object CB_noise: TCheckBox
+    Left = 895
+    Height = 23
+    Top = 8
+    Width = 62
+    Caption = 'Шум'
+    OnChange = CB_noiseChange
+    TabOrder = 7
+  end
+  object Edit_noise: TEdit
+    Left = 895
+    Height = 30
+    Top = 34
+    Width = 56
+    TabOrder = 8
+    Text = '10'
+  end
+  object Edit_contrast: TEdit
+    Left = 968
+    Height = 30
+    Top = 34
+    Width = 48
+    TabOrder = 9
+    Text = '150'
+  end
+  object CB_contrast: TCheckBox
+    Left = 968
+    Height = 23
+    Top = 8
+    Width = 93
+    Caption = 'Контраст'
+    OnChange = CB_contrastChange
+    TabOrder = 10
+  end
+  object Edit_L1_inputs: TEdit
+    Left = 120
+    Height = 30
+    Top = 24
+    Width = 66
+    TabOrder = 11
+    Text = '4096'
+  end
+  object Label5: TLabel
+    Left = 96
+    Height = 17
+    Top = 6
+    Width = 149
+    Caption = 'у нейрона 1-го слоя'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 232
+    Height = 17
+    Top = 48
+    Width = 73
+    Caption = 'нейронов'
+    ParentColor = False
+  end
+  object Label7: TLabel
+    Left = 312
+    Height = 17
+    Top = 48
+    Width = 73
+    Caption = 'нейронов'
+    ParentColor = False
+  end
+  object Label8: TLabel
+    Left = 16
+    Height = 17
+    Top = 48
+    Width = 73
+    Caption = 'нейронов'
+    ParentColor = False
+  end
+  object Label9: TLabel
+    Left = 128
+    Height = 17
+    Top = 48
+    Width = 54
+    Caption = 'входов'
+    ParentColor = False
+  end
+  object BTN_BMPFile_load: TButton
+    Left = 672
+    Height = 43
+    Top = 8
+    Width = 104
+    Caption = 'BMP-файл'
+    OnClick = BTN_BMPFile_loadClick
+    TabOrder = 12
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 200
+    OnTimer = Timer1Timer
+    Left = 728
+    Top = 32
+  end
+  object OpenPictureDialog: TOpenPictureDialog
+    Filter = 'Все файлы (*)|*|Графические файлы (*.png;*.xpm;*.bmp;*.cur;*.ico;*.icns;*.jpeg;*.jpg;*.jpe;*.jfif;*.tif;*.tiff;*.gif;*.pbm;*.pgm;*.ppm)|*.png;*.xpm;*.bmp;*.cur;*.ico;*.icns;*.jpeg;*.jpg;*.jpe;*.jfif;*.tif;*.tiff;*.gif;*.pbm;*.pgm;*.ppm|Portable Network Graphic (*.png)|*.png|Pixmap (*.xpm)|*.xpm|Точечные рисунки (*.bmp)|*.bmp|Курсор (*.cur)|*.cur|Значок (*.ico)|*.ico|Значок Mac OS X (*.icns)|*.icns|Joint Picture Expert Group (*.jpeg;*.jpg;*.jpe;*.jfif)|*.jpeg;*.jpg;*.jpe;*.jfif|Формат Tagged Image File (*.tif;*.tiff)|*.tif;*.tiff|Формат Graphics Interchange Format (*.gif)|*.gif|Portable PixMap (*.pbm;*.pgm;*.ppm)|*.pbm;*.pgm;*.ppm'
+    Left = 760
+    Top = 32
+  end
+end
